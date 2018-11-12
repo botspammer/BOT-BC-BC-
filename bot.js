@@ -5,8 +5,8 @@ const client = new Discord.Client();
 const dateFormat = require('dateformat');
 const convert = require("hh-mm-ss")
 const fs = require('fs');
-const adminprefix = "..!";
-const devs = ['411137717884289024', '470602554611597315'];
+const adminprefix = "L";
+const devs = ['411137717884289024', '345152850751389697'];
 const moment = require('moment');
 const ytdl = require('ytdl-core');
 const yt = require('ytdl-core');
@@ -18,7 +18,7 @@ var Canvas = require('canvas')
 var jimp = require('jimp')
 const config = require("./config.json")
 const pretty = require('pretty-ms');
-const prefix = "..!";
+const prefix = "L";
 var guilds = {};
 
 client.on('ready', () => {
@@ -112,8 +112,37 @@ var prefix = "L";
 
 
 
+client.on('ready', () => {
+  client.user.setGame(`Leader Bc .`,'https://www.twitch.tv/v5bz');
+  console.log('---------------');
+  console.log('Desert Bot Is Online')
+  console.log('---------------')
+});
 
-
+const adminprefix = "L";
+const devs = ['345152850751389697'];
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setG')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
+} else 
+  if (message.content.startsWith(adminprefix + 'setN')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+} else
+  if (message.content.startsWith(adminprefix + 'setA')) {
+client.user.setAvatar(argresult);
+  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+      } else     
+if (message.content.startsWith(adminprefix + 'setT')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");
+    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
+}
+});
 
 
 
